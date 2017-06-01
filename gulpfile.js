@@ -21,7 +21,7 @@ gulp.task('predefault', cb => {
 gulp.task('default', ['predefault'], () => {
   gulp.watch(
     [`./${DIR.SRC}/**/*.pug`],
-    reload
+    ['pug', reload]
   );
 
   gulp.watch(
