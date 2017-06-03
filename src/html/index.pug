@@ -8,6 +8,17 @@ block contentFixedBefore
 
 block contentStatic
   :php
-    print "hello world";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      print<<<_HTML_
+        <p>Hello {$_POST['myName']}</p>
+    _HTML_;
+    } else {
+      print<<<_HTML_
+        <form method="post" action="{$_SERVER['PHP_SELF']}">
+          <div>Your name: <input type="text" name="myName" /></div>
+          <div><input type="submit" value="Say Hello" /></div>
+        </form>
+    _HTML_;
+    }
 
 block contentFixedAfter
